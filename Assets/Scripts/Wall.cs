@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    public enum WallName { Left, Right }
+
     [SerializeField] ScoreKeeper scoreKeeper;
+    [SerializeField] WallName side = WallName.Left;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        scoreKeeper.Goal();
+        scoreKeeper.Goal(side);
     }
 }
